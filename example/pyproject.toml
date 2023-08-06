@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "example"
+version = "0.1.0"
+description = "Example project for the Python Poetry docker container"
+authors = ["Tim Klein Nijenhuis <tim@hetorus.nl>"]
+license = "MIT License, Copyright (c) 2023 Tim Klein Nijenhuis <tim@hetorus.nl>"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
