@@ -20,7 +20,7 @@ COPY scripts/* scripts/
 
 # add the example project to the container
 RUN mkdir -p /code
-COPY example* /code
+COPY example_project/* /code
 
 # set the environment default
 ENV PYTHON_MAIN_FILE=main.py

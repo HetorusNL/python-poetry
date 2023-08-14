@@ -4,8 +4,10 @@ def print_banner() -> None:
 #
 # Welcome to the Python Poetry image!
 #
-# Use this docker image by mounting your code or repo in the /code volume,
-# and providing a pyproject.toml and $PYTHON_MAIN_FILE (main.py) to run.
+# Use this docker image by mounting your code or repo, containing a
+# pyproject.toml and main.py, in the /code volume in the container.
+# Alternatively a different python file can be executed by changing the
+# environment variable $PYTHON_MAIN_FILE.
 #
 ##############################################################################
 """
