@@ -1,6 +1,8 @@
 # Python Poetry
 
-Docker image with Python and Poetry pre-installed.
+**_[WIP] Docker images are not yet available!_**
+
+Run your python code easily using this docker image with Python and Poetry pre-installed.
 
 // TODO: add badges here
 
