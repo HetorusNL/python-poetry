@@ -9,6 +9,8 @@ def print_banner() -> None:
 # Alternatively a different python file can be executed by changing the
 # environment variable $PYTHON_MAIN_FILE.
 #
+# More information is available on https://github.com/HetorusNL/python-poetry
+#
 ##############################################################################
 """
     print(banner)
