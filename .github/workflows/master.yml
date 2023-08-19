@@ -2,7 +2,7 @@ name: Master branch CI/CD
 
 on:
   push:
-    branches: [master]
+    # branches: [master] # TODO: restore before merge
   schedule:
     - cron: "0 20 * * 0" # UTC
 
