@@ -1,0 +1,42 @@
+name: Master branch CI/CD
+
+on:
+  push:
+    branches: [master]
+  schedule:
+    - cron: "0 20 * * 0" # UTC
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # checkout the repo to $GITHUB_WORKSPACE
+      - uses: actions/checkout@v3
+
+      # login to docker hub
+      - name: Login to Dockerhub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      # login to github container registry
+      - name: Login to ghcr.io
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # build and push the docker image to ghcr.io
+      - name: Build and Push Image to ghcr.io
+        run: ./gha/build-container.sh
+        env:
+          CI_REGISTRY: ghcr.io/hetorusnl/python-poetry
+
+      # build and push the docker image to docker hub
+      - name: Build and Push Image to Dockerhub
+        run: ./gha/build-container.sh
+        env:
+          CI_REGISTRY: hetorusnl/python-poetry

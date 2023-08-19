@@ -5,16 +5,15 @@ RUN export POETRY_PATH=/opt/poetry && \
     # create a venv for poetry
     python3 -m venv $POETRY_PATH && \
     # install the requirements of poetry
-    $POETRY_PATH/bin/pip install -U pip setuptools && \
+    $POETRY_PATH/bin/pip install --no-cache-dir -U pip setuptools && \
     # install poetry itself in the venv
-    $POETRY_PATH/bin/pip install poetry && \
+    $POETRY_PATH/bin/pip install --no-cache-dir poetry && \
     # create a symlink to poetry in /bin
     ln -s $POETRY_PATH/bin/poetry /bin/poetry && \
     # make sure to create the .venv in the project folder
     poetry config virtualenvs.in-project true && \
     # create the needed directories
     mkdir -p /scripts /code;
-# TODO: add cleanup of `pip install` here
 
 # copy the content of the scripts directory into the container
 COPY scripts/* /scripts
@@ -24,6 +23,14 @@ COPY example_project/* /code
 
 # set the environment default
 ENV PYTHON_MAIN_FILE=main.py
+
+# add the container labels
+LABEL org.label-schema.vcs-ref=$VCS_REF
+LABEL org.label-schema.vcs-url=https://github.com/HetorusNL/python-poetry
+LABEL org.opencontainers.image.authors=tim@hetorus.nl
+LABEL org.opencontainers.image.source=https://github.com/HetorusNL/python-poetry
+LABEL org.opencontainers.image.description="Python docker image with poetry pre-installed"
+LABEL org.opencontainers.image.licenses=MIT
 
 # set the workdir and the entrypoint of the container
 WORKDIR /code
