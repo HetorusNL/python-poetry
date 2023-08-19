@@ -1,8 +1,6 @@
 # Python Poetry
 
-**_[WIP] Docker images are not yet available!_**
-
-Run your python code easily using this docker image with Python and Poetry pre-installed.
+Run your python code easily using this docker image with the latest version of Python3 and Poetry pre-installed.
 
 // TODO: add badges here
 
@@ -10,6 +8,11 @@ Run your python code easily using this docker image with Python and Poetry pre-i
 
 Use this docker image by mounting your code or repo, containing a `pyproject.toml` and `main.py`, in the `/code` volume in the container.
 Alternatively a different python file can be executed by changing the environment variable `PYTHON_MAIN_FILE`.
+
+The docker image is available at the following container registries:
+
+- Docker hub: `hetorusnl/python-poetry`
+- Github container registry: `ghcr.io/hetorusnl/python-poetry`
 
 ### Examples
 
@@ -20,7 +23,7 @@ To help you getting started, several examples using the docker cli and docker-co
 The simplest example runs the container with the included example project:
 
 ```bash
-docker run -it --rm HetorusNL/python-poetry
+docker run -it --rm hetorusnl/python-poetry
 ```
 
 To run your own python file and stop the container after the script finishes, use the following snippet.  
@@ -32,7 +35,7 @@ This will expose port `<internal>` from inside the container to `<external>` on 
 docker run -it --rm \
   -e PYTHON_MAIN_FILE=main.py \
   -v /path/to/project:/code \
-  HetorusNL/python-poetry
+  hetorusnl/python-poetry
 ```
 
 To run a python file in the background and detach it from the terminal, use the following.
@@ -41,19 +44,30 @@ To run a python file in the background and detach it from the terminal, use the 
 docker run -d --name=python-poetry \
   -e PYTHON_MAIN_FILE=main.py \
   -v /path/to/project:/code \
-  HetorusNL/python-poetry
+  hetorusnl/python-poetry
 ```
 
 ### Docker Compose
 
-Run this example docker compose file using `docker compose up` to attach it to the terminal, or `docker compose up -d` to run in the background and detach it from the terminal.
+Run this example docker compose file using `docker compose up` to attach it to the terminal, or `docker compose up -d` to run in the background and detach it from the terminal. This will run the example project, and is also available in the repository as `docker-compose.yml`
 
 ```docker-compose
 version: "3"
 
 services:
   python-poetry:
-    image: HetorusNL/python-poetry
+    image: hetorusnl/python-poetry
+    container_name: python-poetry
+```
+
+A more advanced docker compose example is shown below. Modify the environment, ports and volumes according to your application.
+
+```docker-compose
+version: "3"
+
+services:
+  python-poetry:
+    image: hetorusnl/python-poetry
     container_name: python-poetry
     environment:
       - PYTHON_MAIN_FILE=main.py # optional to run a different file

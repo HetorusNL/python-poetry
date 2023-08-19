@@ -1,6 +1,6 @@
 version: "3"
 
 services:
-  python-poetry-test:
-    image: python-poetry-latest-test
-    container_name: python-poetry-latest-test
+  python-poetry:
+    image: hetorusnl/python-poetry
+    container_name: python-poetry
