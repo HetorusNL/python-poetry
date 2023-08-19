@@ -2,8 +2,9 @@ name: Update Dockerhub Description
 
 on:
   push:
-    branches:
-      - master
+    # TODO: restore before merge!
+    # branches:
+    #   - master
     paths:
       - README.md
       - .github/workflows/dockerhub-description.yml
