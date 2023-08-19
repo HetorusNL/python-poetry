@@ -6,7 +6,7 @@ on:
     - cron: "0 20 * * 0" # UTC
 
 jobs:
-  build:
+  build-and-push-container:
     runs-on: ubuntu-latest
 
     steps:
