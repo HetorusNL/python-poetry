@@ -23,6 +23,10 @@ COPY example_project/* /code
 
 # set the environment default
 ENV PYTHON_MAIN_FILE=main.py
+ENV REPO_URL=
+ENV REPO_BRANCH=master
+ENV REPO_CLONE_PATH=repo
+ENV REPO_PREPARE_SCRIPT=
 
 # add the container labels
 LABEL org.label-schema.vcs-ref=$VCS_REF

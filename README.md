@@ -55,9 +55,9 @@ Run this example docker compose file using `docker compose up` to attach it to t
 version: "3"
 
 services:
-  python-poetry:
+  python-poetry-example:
     image: hetorusnl/python-poetry
-    container_name: python-poetry
+    container_name: python-poetry-example
 ```
 
 A more advanced docker compose example is shown below. Modify the environment, ports and volumes according to your application.
@@ -66,15 +66,33 @@ A more advanced docker compose example is shown below. Modify the environment, p
 version: "3"
 
 services:
-  python-poetry:
+  python-poetry-with-code:
     image: hetorusnl/python-poetry
-    container_name: python-poetry
+    container_name: python-poetry-with-code
     environment:
       - PYTHON_MAIN_FILE=main.py # optional to run a different file
     ports:
       - 80:80 # optional, exposes port 80 from inside the container to the host
     volumes:
       - /path/to/project:/code # if not provided, runs the included example project
+```
+
+An example using the repo-cloning functionality of the container is shown below.
+Modify the related environment variables, ports and volumes according to your application.
+REPO_PREPARE_SCRIPT can be set to a script name in the repo, that is executed before running python.
+
+```docker-compose
+version: "3"
+
+services:
+  python-poetry-with-repo:
+    image: hetorusnl/python-poetry
+    container_name: python-poetry-with-repo
+    ports:
+      - 8000:8000
+    environment:
+      - REPO_URL=https://github.com/<username>/<repo-name>
+      - REPO_PREPARE_SCRIPT=./prepare.sh
 ```
 
 ## FAQ
