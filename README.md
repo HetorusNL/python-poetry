@@ -14,6 +14,10 @@ The docker image is available at the following container registries:
 - Docker hub: `hetorusnl/python-poetry`
 - Github container registry: `ghcr.io/hetorusnl/python-poetry`
 
+# Environment variables
+
+// TODO: add table with environment variables here
+
 ### Examples
 
 To help you getting started, several examples using the docker cli and docker-compose are provided below.
