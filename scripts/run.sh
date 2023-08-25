@@ -22,7 +22,7 @@ fi
 poetry install
 poetry run python3 $PYTHON_MAIN_FILE
 
-if [[ -z $REPO_URL ]]; then
+if [[ -n $REPO_URL ]]; then
     # transition out of the REPO_URL folder
     popd
 fi
