@@ -1,6 +1,6 @@
 # Python Poetry
 
-Run your python code easily using this docker image with the latest version of Python3 and Poetry pre-installed.
+Run your python code easily using this docker image with the latest version of Python3.11 and Poetry pre-installed.
 
 // TODO: add badges here
 

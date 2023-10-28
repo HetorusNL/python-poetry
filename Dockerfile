@@ -1,4 +1,4 @@
-FROM python:latest
+FROM python:3.11
 
 # install poetry in the container
 RUN export POETRY_PATH=/opt/poetry && \
