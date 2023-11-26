@@ -19,7 +19,7 @@ if [[ -n $REPO_PREPARE_SCRIPT ]]; then
 fi
 
 # run poetry install and run the PYTHON_MAIN_FILE script
-poetry install
+poetry install --no-root
 poetry run python3 $PYTHON_MAIN_FILE
 
 if [[ -n $REPO_URL ]]; then
